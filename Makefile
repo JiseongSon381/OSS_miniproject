@@ -1,12 +1,13 @@
 CC = gcc
 CFLAGS = -W -Wall
 TARGET = library
-DTARGET = library_debug
-OBJECTS = main_library.c ./inc/menu.o ./inc/guest.o
-all : $(TARGET)
+TARGET_L = library.o
+OBJECTS = main_library.c ./inc/library.o
+OBJECTS_L = ./inc/library.c
+
 $(TARGET) : $(OBJECTS)
 	$(CC) $(CFLAGS) -o $@ $^
-$(DTARGET) : $(OBJECTS)
-	$(CC) $(CFLAGS) -DDEBUG -o $@ $^
+$(TARGET_L) : $()
+	$(CC) $(CFLAGS) -o $@ $^
 clean:
-	rm *.o library
+	rm ./inc/*.o library
